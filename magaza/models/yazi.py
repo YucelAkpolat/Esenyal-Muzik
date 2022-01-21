@@ -3,6 +3,7 @@ from django.db import models
 from autoslug import AutoSlugField
 from magaza.models import KategoriModel
 from django.contrib.auth.models import User
+from  ckeditor.fields import RichTextField
 
 
 
@@ -10,7 +11,7 @@ from django.contrib.auth.models import User
 class YazilarModel(models.Model):
     resim = models.ImageField(upload_to = 'yazı_resimleri')
     baslik = models.CharField(max_length=50)
-    icerik = models.TextField()
+    icerik = RichTextField()
     olusturulma_tarihi = models.DateField(auto_now=True)
     düzenlenme_tarihi = models.DateField(auto_now=True)
     slug =  AutoSlugField(populate_from ='baslik',unique=True)
